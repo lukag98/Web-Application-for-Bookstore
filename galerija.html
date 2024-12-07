@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerija</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">POČETNA</a></li>
+            <li><a href="knjige.html">KNJIGE</a></li>
+            <li><a href="galerija.html">GALERIJA</a></li>
+            <li><a href="onama.html">O NAMA</a></li>
+            <li><a href="kontakt.html">KONTAKT</a></li>
+        </ul>
+    </nav> 
+
+     <!-- C -->
+<div class="kontejnergalerija" >
+
+    <!-- Full-width images with number text -->
+    <div class="slike">
+      <div class="broj">1 / 6</div>
+        <img src="img/11.jpg" style="width:100%;">
+    </div>
+  
+    <div class="slike">
+      <div class="broj">2 / 6</div>
+        <img src="img/12.jpg" style="width:100%;">
+    </div>
+  
+    <div class="slike">
+      <div class="broj">3 / 6</div>
+        <img src="img/13.jpg" style="width:100%;">
+    </div>
+  
+    <div class="slike">
+      <div class="broj">4 / 6</div>
+        <img src="img/14.jpg" style="width:100%;">
+    </div>
+  
+    <div class="slike">
+      <div class="broj">5 / 6</div>
+        <img src="img/15.jpg" style="width:100%;">
+    </div>
+  
+    <div class="slike">
+      <div class="broj">6 / 6</div>
+        <img src="img/16.jpg" style="width:100%;">
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+    <!-- Image text -->
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+  
+    <!-- Thumbnail images -->
+    <div class="row">
+      <div class="column">
+        <img class="demo cursor" src="img/11.jpg" style="width:100%" onclick="currentSlide(1)" alt="Sajam knjiga 2022">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="img/12.jpg" style="width:100%" onclick="currentSlide(2)" alt="Sajam knjiga 2021">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="img/13.jpg" style="width:100%" onclick="currentSlide(3)" alt="Sajam knjiga 2020">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="img/14.jpg" style="width:100%" onclick="currentSlide(4)" alt="Sajam knjiga 2021">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="img/15.jpg" style="width:100%" onclick="currentSlide(5)" alt="Sajam knjiga 2019">
+      </div>
+      <div class="column">
+        <img class="demo cursor" src="img/16.jpg" style="width:100%" onclick="currentSlide(6)" alt="Sajam knjiga 2018">
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("slike");
+  let dots = document.getElementsByClassName("demo");
+  let captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+} 
+  </script> 
+
+  
+ <!-- FUTER -->
+
+ <footer id="footer">
+  <div id="futertekst">
+    <ul>NAJPOSEĆENIJE STRANICE <br>
+      <li>
+        <a id="prvi-link" href="#">Link1</a>
+      </li>
+      <li>
+        <a id="drugi-link" href="#">Link1</a>
+      </li>
+      <li>
+        <a id="treci-link" href="#">Link1</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+      var trenutnaStranica = window.location.pathname;
+      var imeStranice = provera(trenutnaStranica);
+      
+      var stranice = JSON.parse(localStorage.getItem("najposecenijeStranice")) || {};
+
+      if(stranice[imeStranice]){
+          stranice[imeStranice] += 1;
+      } else {
+          stranice[imeStranice] = 1;
+      }
+
+      let straniceNiz = [
+        {
+          ime : "POČETNA",
+          brPoseta : parseInt(stranice["POČETNA"])
+        },
+        {
+          ime : "KNJIGE",
+          brPoseta : parseInt(stranice["KNJIGE"])
+        },
+        {
+          ime : "O NAMA",
+          brPoseta : parseInt(stranice["O NAMA"])
+        },
+        {
+          ime : "GALERIJA",
+          brPoseta : parseInt(stranice["GALERIJA"])
+        },
+        {
+          ime : "KONTAKT",
+          brPoseta : parseInt(stranice["KONTAKT"])
+        }
+      ];
+      console.log(straniceNiz[0].brPoseta);
+      for(let i = 0 ; i<straniceNiz.length-1; i++){
+        for(let j = i+1; j<straniceNiz.length; j++){
+          if(parseInt(straniceNiz[i].brPoseta) < parseInt(straniceNiz[j].brPoseta)){
+            let temp = straniceNiz[i];
+            straniceNiz[i] = straniceNiz[j];
+            straniceNiz[j] = temp;
+          }
+        }
+      }
+
+      console.log(straniceNiz);
+
+      localStorage.setItem("najposecenijeStranice", JSON.stringify(stranice));
+
+      let linkPrveStranice = kreirajAdresu(straniceNiz[0].ime);
+      console.log(linkPrveStranice);
+      let imePrveStranice = straniceNiz[0].ime;
+      console.log(imePrveStranice);
+      let linkDrugeStranice = kreirajAdresu(straniceNiz[1].ime);
+      console.log(linkDrugeStranice);
+      let imeDrugeStranice = straniceNiz[1].ime;
+      console.log(imeDrugeStranice);
+      let linkTreceStranice = kreirajAdresu(straniceNiz[2].ime);
+      console.log(linkTreceStranice);
+      let imeTreceStranice = straniceNiz[2].ime;
+      console.log(imeTreceStranice);
+
+      document.getElementById("prvi-link").href=linkPrveStranice;
+      document.getElementById("prvi-link").innerHTML=imePrveStranice;
+      document.getElementById("drugi-link").href=linkDrugeStranice;
+      document.getElementById("drugi-link").innerHTML=imeDrugeStranice;
+      document.getElementById("treci-link").href=linkTreceStranice;
+      document.getElementById("treci-link").innerHTML=imeTreceStranice;
+
+      function provera(adresa){
+          var delovi = adresa.split("/");
+          var imeStranice = delovi[delovi.length - 1];
+          console.log(imeStranice); 
+          if(imeStranice==="index.html") return "POČETNA";
+          else if(imeStranice==="knjige.html") return "KNJIGE";
+          else if(imeStranice==="onama.html") return "O NAMA";
+          else if(imeStranice==="galerija.html") return "GALERIJA";
+          else if(imeStranice==="kontakt.html") return "KONTAKT";
+      }
+
+      function kreirajAdresu(ime){
+        if(ime==="POČETNA") return "index.html";
+        else if(ime==="KNJIGE") return "knjige.html";
+        else if(ime==="O NAMA") return "onama.html";
+        else if(ime==="GALERIJA") return "galerija.html";
+        else if(ime==="KONTAKT") return "kontakt.html";
+      }
+  </script>
+  <div id="kopirajt">Nastojimo da budemo što precizniji u opisu proizvoda, prikazu slika i samih cena, ali ne možemo garantovati da su sve informacije kompletne i bez grešaka.<br/>
+  Svi artikli prikazani na sajtu su deo naše ponude i ne podrazumeva se da su dostupni u svakom trenutku.<br/><br/>
+  <i>&copy 2023 www.lgknjizare.com, sva prava zadržana.</i></div>
+
+</footer>
+
+</body>
+</html>

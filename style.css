@@ -1,0 +1,475 @@
+body
+{
+  background-image: url(img/19.jpg);
+  background-position: center;
+  background-repeat: repeat;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding-bottom: 100px;
+}
+
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 20px;
+    
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    display: block;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: gray;
+    background-color: #000;
+    padding: 10px 25px;
+    border-radius: 5
+}
+
+/*FUTER */
+
+
+#footer{
+  width: 100%;
+  height: 200px;
+  font-size: 20px;
+  border-top: 3px solid orange;
+  color: White;
+  margin-top: 70px;
+  
+}
+
+
+#futertekst{
+  margin-top: 20px;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  
+}
+
+#futertekst ul li{
+  display: inline-block;
+  padding-top: 20px;
+  padding-left: 20px;
+  text-align: center;
+}
+
+#futertekst ul li a:hover{
+    opacity:0.6;
+    color: gray;
+}
+
+#futertekst ul li a{
+    text-decoration: none;
+    color: Orange;
+}
+#kopirajt{
+  font-size: 16px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+
+
+/*GALERIJA */
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+/* Pozicija kontejnera (needed to position the left and right arrows) */
+.kontejnergalerija {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 90%;
+  align-items: center;
+  background-color: White;
+  border: 5px solid white;
+}
+
+/* Hide the images by default */
+.slike {
+  display: none;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* Add pointer */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Broj (1/6) */
+.broj {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Šest kolona jedna pored druge thumbnail */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Transparent za tumbnail slike */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+/*GALERIJA KRAJ */
+
+
+/*INDEX */
+#najcitanije-container{
+  width: 100%;
+  text-align: center;
+}
+.pocetna-naslov{
+  text-align: center;
+  margin-top: 50px;
+  font-size: 30px;
+  background-color: orange;
+  width: 100%;
+}
+.knjiga-container{
+  display: inline-block;
+  width: 200px;
+  height: 300px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: grey;
+  border: 1px solid gray;
+  transition: 0.2s ease-in;
+}
+
+.knjiga-container:hover{
+  transition: 0.2s ease-in;
+  background-color: orange;
+  box-shadow: 0px 10px 30px 0px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.img-knjiga{
+  margin-top: 20px;
+  width: 150px;
+  height: 200px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.ime-knjige{
+  margin-top:10px;
+  margin-bottom: 0;
+
+}
+.pisac{
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.knjiga-container:hover #korpa{
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+
+.teksthome{
+  text-align: center;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  font-size: large;
+}
+
+.baner{
+  display: block;
+  position: relative;
+  margin: auto;
+}
+
+.slideshowhome{
+  padding-top: 70px;
+
+}
+
+
+/* KOLONE */
+
+
+
+/* Kolone kontejner */
+.kolone {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+  background-color: White;
+  
+  }
+  
+  /* Leva kolona */
+  .leva {
+    flex: 50%; /* Set the width of the sidebar */
+  padding: 20px; /* Some padding */
+  }
+  
+  /* Desna kolona */
+  .desna {
+    flex: 50%; /* Set the width of the main content */
+    background-color: orange; /* White background color */
+    padding: 20px; /* Some padding */
+  }
+  
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    .kolone {
+      flex-direction: column;
+    }
+  }
+  
+  /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+  @media screen and (max-width: 400px) {
+    .navbar a {
+      float: none;
+      width: 100%;
+  }
+  }
+  
+  /* KOLONE KRAJ */
+  
+  
+  /* VIDEO */
+  
+   /* Style the video: 100% width and height to cover the entire window */
+  #myVideo {
+    position: relative;
+    width: 100%;
+    height: auto;
+    
+  }
+  
+  .content {
+    position: relative;
+    width: 100%;
+  }
+  
+  
+  /* VIDEO KRAJ */
+  
+  /*INDEX KRAJ */
+
+
+/*O NAMA */
+
+
+
+.kolona1 {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.tim
+{
+  color: orange;
+}
+
+.info {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+  background-color: whitesmoke;
+
+  
+}
+
+.onama {
+  padding: 50px;
+  text-align: center;
+  font-size: large;
+  background-color: grey;
+  color: white;
+}
+
+.ime {
+  padding: 0 16px;
+}
+
+.ime::after, .sekcija::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.zanimanje {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: orange;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .kolona1 {
+    width: 100%;
+    display: block;
+  }
+}
+
+
+
+/* O NAMA KRAJ */
+
+
+/* KNJIGE */
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+/* Create four equal columns that sits next to each other */
+.kolona2 {
+  flex: 25%;
+  max-width: 25%;
+  padding: 10px;
+}
+
+.kolona2 img {
+  margin-top: 20px;
+  vertical-align: middle;
+  width: 100%;
+  border-radius: 5px;
+  border: 5px solid whitesmoke;
+  
+ 
+}
+.kolona2 img:hover{
+  opacity: 0.7;
+
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .kolona2 {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .kolona2 {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+/* KNJIGE KRAJ */
+
+/* POCETAK KONTAKT */
+@media screen and (max-width: 859px) {
+   
+   
+}
+@media screen and (max-width: 760px) {
+  nav{
+    height: 280px;
+  }
+  nav *{
+      display: block;
+  }
+  nav li{
+    width: 100%;
+  }
+  nav ul{
+    margin-top: 10px;
+  }
+}

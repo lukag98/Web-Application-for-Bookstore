@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="kontakt.css">
+    
+</head>
+
+<body >
+    <nav>
+        <ul>
+            <li><a href="index.html">POČETNA</a></li>
+            <li><a href="knjige.html">KNJIGE</a></li>
+            <li><a href="galerija.html">GALERIJA</a></li>
+            <li><a href="onama.html">O NAMA</a></li>
+            <li><a href="kontakt.html">KONTAKT</a></li>
+        </ul>
+    </nav>
+
+    <div id="kontakt-sadrzaj">
+      <div class="kontakt-forma">
+        <form>
+          <label for="ime" >Ime:</label> <br>
+          <input type="text" id="ime" name="ime" required><br>
+          <label for="prezime">Prezime:</label> <br>
+          <input type="text" id="prezime" name="prezime" required><br>
+          <label for="email">E-mail:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <span id="email-error" style="display:none; color:#FF8A8A; font-size: 15px;">E-mail adresa nije ispravna!</span>
+    <label for="lozinka">Lozinka:</label><br>
+    <input type="password" id="lozinka" name="lozinka" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"><br>
+    <span id="lozinka-error" style="display:none; color:#FF8A8A; font-size: 15px;"></span>
+    <label for="potvrda-lozinke">Potvrda lozinke:</label><br>
+    <input type="password" id="potvrda-lozinke" name="potvrda-lozinke" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"><br><br>
+    <input type="submit" value="Potvrdi" onclick="validateForm()" id="submit-button">
+  </form>
+      </div>
+    
+      <div class="mapa">
+
+
+        <div class="gmap">
+          <iframe 
+            width="100%" 
+            height="600" 
+            id="gmap_canvas" 
+            src="https://maps.google.com/maps?q=Vojvode%20Stepe%20283&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0"></iframe>
+        </div>
+
+        <div>
+
+          <p class="paragrafkontakt">
+            LG knjižara d.o.o.<br>
+            <br>
+            011 4540900 (pon-subota 9 do 16h)<br>
+            Vojvode Stepe 283 11000 Beograd<br>
+            info@lgknjizare.rs<br>
+            Račun: Banka Intesa 160-336484-06<br>
+            Šifra delatnosti: 4761<br>
+            PIB: 106614339<br>
+            Matični broj: 20644834<br>
+          </p>
+      
+      
+      </div>
+      </div>
+    </div>
+
+
+    <script>
+      function validateForm() {
+
+
+// Validacija imejla
+
+const email = document.getElementById("email");
+const emailError = document.getElementById("email-error");
+if (!email.checkValidity()) {
+    email.style="background-color: #FF8A8A;"
+    emailError.style.display = "block";
+    return false;
+} else {
+    email.style="background-color:#faefd9"
+    emailError.style.display = "none";
+}
+
+// Validacija lozinke
+
+const lozinka = document.getElementById("lozinka");
+const potvrdaLozinke = document.getElementById("potvrda-lozinke");
+const lozinkaError = document.getElementById("lozinka-error");
+  if (lozinka.value !== potvrdaLozinke.value) {
+    lozinkaError.innerHTML= "Lozinke se ne poklapaju!"
+    lozinka.style="background-color: #FF8A8A;"
+    potvrdaLozinke.style="background-color: #FF8A8A;"
+    lozinkaError.style.display = "block";
+    return false;
+} else if (!lozinka.checkValidity() || !potvrdaLozinke.checkValidity()) {
+    lozinkaError.innerHTML= "Lozinka mora da sadrži minimum šest karaktera, broj i veliko slovo!"
+    lozinkaError.style.display = "block";
+    lozinka.style="background-color: #FF8A8A;"
+    potvrdaLozinke.style="background-color: #FF8A8A;"
+    return false;
+} 
+else{
+    lozinka.style="background-color: #faefd9;"
+    potvrdaLozinke.style="background-color: #faefd9;"
+
+    return false;
+}
+}
+    
+  </script>
+
+
+
+<!-- FUTER -->
+
+<footer id="footer">
+  <div id="futertekst">
+    <ul>NAJPOSEĆENIJE STRANICE <br>
+      <li>
+        <a id="prvi-link" href="#">Link1</a>
+      </li>
+      <li>
+        <a id="drugi-link" href="#">Link1</a>
+      </li>
+      <li>
+        <a id="treci-link" href="#">Link1</a>
+      </li>
+    </ul>
+  </div>
+  <script>
+      var trenutnaStranica = window.location.pathname;
+      var imeStranice = provera(trenutnaStranica);
+      
+      var stranice = JSON.parse(localStorage.getItem("najposecenijeStranice")) || {};
+
+      if(stranice[imeStranice]){
+          stranice[imeStranice] += 1;
+      } else {
+          stranice[imeStranice] = 1;
+      }
+
+      let straniceNiz = [
+        {
+          ime : "POČETNA",
+          brPoseta : parseInt(stranice["POČETNA"])
+        },
+        {
+          ime : "KNJIGE",
+          brPoseta : parseInt(stranice["KNJIGE"])
+        },
+        {
+          ime : "O NAMA",
+          brPoseta : parseInt(stranice["O NAMA"])
+        },
+        {
+          ime : "GALERIJA",
+          brPoseta : parseInt(stranice["GALERIJA"])
+        },
+        {
+          ime : "KONTAKT",
+          brPoseta : parseInt(stranice["KONTAKT"])
+        }
+      ];
+      console.log(straniceNiz[0].brPoseta);
+      for(let i = 0 ; i<straniceNiz.length-1; i++){
+        for(let j = i+1; j<straniceNiz.length; j++){
+          if(parseInt(straniceNiz[i].brPoseta) < parseInt(straniceNiz[j].brPoseta)){
+            let temp = straniceNiz[i];
+            straniceNiz[i] = straniceNiz[j];
+            straniceNiz[j] = temp;
+          }
+        }
+      }
+
+      console.log(straniceNiz);
+
+      localStorage.setItem("najposecenijeStranice", JSON.stringify(stranice));
+
+      let linkPrveStranice = kreirajAdresu(straniceNiz[0].ime);
+      console.log(linkPrveStranice);
+      let imePrveStranice = straniceNiz[0].ime;
+      console.log(imePrveStranice);
+      let linkDrugeStranice = kreirajAdresu(straniceNiz[1].ime);
+      console.log(linkDrugeStranice);
+      let imeDrugeStranice = straniceNiz[1].ime;
+      console.log(imeDrugeStranice);
+      let linkTreceStranice = kreirajAdresu(straniceNiz[2].ime);
+      console.log(linkTreceStranice);
+      let imeTreceStranice = straniceNiz[2].ime;
+      console.log(imeTreceStranice);
+
+      document.getElementById("prvi-link").href=linkPrveStranice;
+      document.getElementById("prvi-link").innerHTML=imePrveStranice;
+      document.getElementById("drugi-link").href=linkDrugeStranice;
+      document.getElementById("drugi-link").innerHTML=imeDrugeStranice;
+      document.getElementById("treci-link").href=linkTreceStranice;
+      document.getElementById("treci-link").innerHTML=imeTreceStranice;
+
+      function provera(adresa){
+          var delovi = adresa.split("/");
+          var imeStranice = delovi[delovi.length - 1];
+          console.log(imeStranice); 
+          if(imeStranice==="index.html") return "POČETNA";
+          else if(imeStranice==="knjige.html") return "KNJIGE";
+          else if(imeStranice==="onama.html") return "O NAMA";
+          else if(imeStranice==="galerija.html") return "GALERIJA";
+          else if(imeStranice==="kontakt.html") return "KONTAKT";
+      }
+
+      function kreirajAdresu(ime){
+        if(ime==="POČETNA") return "index.html";
+        else if(ime==="KNJIGE") return "knjige.html";
+        else if(ime==="O NAMA") return "onama.html";
+        else if(ime==="GALERIJA") return "galerija.html";
+        else if(ime==="KONTAKT") return "kontakt.html";
+      }
+  </script>
+  <div id="kopirajt">Nastojimo da budemo što precizniji u opisu proizvoda, prikazu slika i samih cena, ali ne možemo garantovati da su sve informacije kompletne i bez grešaka.<br/>
+  Svi artikli prikazani na sajtu su deo naše ponude i ne podrazumeva se da su dostupni u svakom trenutku.<br/><br/>
+  <i>&copy 2023 www.lgknjizare.com, sva prava zadržana.</i></div>
+
+</footer>
+
+
+
+</body>
+</html>
+
